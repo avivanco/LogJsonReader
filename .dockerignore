@@ -1,0 +1,11 @@
+**/node_modules
+**/dist
+**/build
+**/.gradle
+**/test-results
+**/playwright-report
+backend/local.properties
+.git
+.idea
+docs
+scripts

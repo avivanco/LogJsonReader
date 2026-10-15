@@ -1,0 +1,1 @@
+{"@timestamp":"2026-10-15T00:08:10.340052226Z","level":"INFO","thread_name":"reactor-http-epoll-3","logger_name":"com.insurance.integration.services.base.BaseServiceIntegration","message":"[HTTP request] POST https://local/uri","trace_id":"b74e12bc610d474d9ac19d303f71c585","trace_flags":"00","span_id":"f05f2d2380b80ad1","username":"aaaaa"}

@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Surfaces and ink follow the validated reference palette; severity colors are an ordered scale
+ * (neutral -> blue -> amber -> red -> violet) so "louder" always means "more severe". WARN uses the reserved status
+ * amber, which is below 3:1 on the light surface, so severity is never conveyed by color alone: every use pairs the
+ * swatch with the level name (chips, legend, tooltip, table badges) and a table view of the timeline exists.
+ */
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb;
+  --page: #f9f9f7;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --line: #e1e0d9;
+  --axis: #c3c2b7;
+  --accent: #2a78d6;
+  --hover: rgb(11 11 11 / 0.05);
+  --selected: rgb(42 120 214 / 0.12);
+  --lvl-unknown: #a39e8f;
+  --lvl-trace: #c3c2b7;
+  --lvl-debug: #898781;
+  --lvl-info: #2a78d6;
+  --lvl-warn: #fab219;
+  --lvl-error: #d03b3b;
+  --lvl-fatal: #6250d6;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface: #1a1a19;
+  --page: #0d0d0d;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --line: #2c2c2a;
+  --axis: #383835;
+  --accent: #3987e5;
+  --hover: rgb(255 255 255 / 0.06);
+  --selected: rgb(57 135 229 / 0.2);
+  --lvl-unknown: #77736a;
+  --lvl-trace: #4a4a46;
+  --lvl-debug: #898781;
+  --lvl-info: #3987e5;
+  --lvl-warn: #fab219;
+  --lvl-error: #d03b3b;
+  --lvl-fatal: #9085e9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --surface: #1a1a19;
+    --page: #0d0d0d;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --line: #2c2c2a;
+    --axis: #383835;
+    --accent: #3987e5;
+    --hover: rgb(255 255 255 / 0.06);
+    --selected: rgb(57 135 229 / 0.2);
+    --lvl-unknown: #77736a;
+    --lvl-trace: #4a4a46;
+    --lvl-debug: #898781;
+    --lvl-info: #3987e5;
+    --lvl-warn: #fab219;
+    --lvl-error: #d03b3b;
+    --lvl-fatal: #9085e9;
+  }
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-page: var(--page);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-axis: var(--axis);
+  --color-accent: var(--accent);
+  --color-hover: var(--hover);
+  --color-selected: var(--selected);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'SF Mono', Consolas, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Hatch used for the UNKNOWN level (lines that were not valid JSON), so it never relies on hue. */
+.swatch-unknown {
+  background: repeating-linear-gradient(45deg, var(--lvl-unknown) 0 2px, transparent 2px 4px);
+}

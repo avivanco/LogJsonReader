@@ -1,0 +1,25 @@
+# Build output
+build/
+dist/
+out/
+.gradle/
+node_modules/
+
+# Machine-local
+local.properties
+*.log.tmp
+/logs/
+
+# Test artifacts
+test-results/
+playwright-report/
+
+# Runtime data
+*.duckdb
+*.duckdb.wal
+
+# IDEs / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

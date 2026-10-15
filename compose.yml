@@ -1,0 +1,16 @@
+# docker compose up --build   ->   http://localhost:8080
+services:
+  logviewer:
+    build: .
+    image: logviewer
+    ports:
+      # Bound to this machine only: there is no authentication yet. To let colleagues on your network use the same
+      # instance, change to "8080:8080" - and only do so on a trusted network.
+      - "127.0.0.1:8080:8080"
+    volumes:
+      # Files in ./logs can be opened from the UI without uploading them.
+      - ./logs:/logs:ro
+      - logviewer-data:/data
+
+volumes:
+  logviewer-data:
